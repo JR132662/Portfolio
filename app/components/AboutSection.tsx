@@ -29,7 +29,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black py-32 px-6 lg:px-12">
+    <section id="about" className="relative min-h-screen flex items-center justify-center bg-black py-16 sm:py-20 overflow-x-hidden">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
       
@@ -37,43 +37,43 @@ export default function AboutSection() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      <div className="relative max-w-6xl mx-auto w-full px-4 lg:px-0">
-        <div className="grid !p-1.5 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-6xl mx-auto w-full sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-center">
           {/* Left Content */}
-          <div>
-            <div className="inline-block mb-6">
+          <div className="text-center lg:text-left w-full">
+            <div className="inline-block mb-4 lg:mb-6">
               <span 
-                className="px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-400"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs sm:text-sm font-medium text-blue-400"
                 style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 About Me
               </span>
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-bold mb-12 leading-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+            <h2 className="text-lg sm:text-2xl lg:text-5xl font-bold mb-3 sm:mb-6 lg:mb-12 leading-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
               Full-Stack Developer & UI/UX Designer
             </h2>
 
-            <p className="text-lg text-gray-400 leading-relaxed mb-6">
+            <p className="text-[14px] sm:text-sm lg:text-lg text-gray-400 leading-relaxed mb-2 sm:mb-4 lg:mb-6">
               I specialize in building production-ready applications with React, Next.js, and TypeScript. From IoT kiosks to enterprise dashboards, I transform complex requirements into intuitive, scalable solutions.
             </p>
 
-            <p className="text-lg text-gray-400 leading-relaxed mb-20">
+            <p className="text-[14px] sm:text-sm lg:text-lg text-gray-400 leading-relaxed mb-4 sm:mb-8 lg:mb-20">
               With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design. Currently advancing AI-powered systems and real-time data processing at scale.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 !mt-12">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-6 sm:mt-8 lg:mt-12">
               {[
                 { number: '30+', label: 'Projects' },
                 { number: '4+', label: 'Years' },
                 { number: '10+', label: 'Technologies' },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-2xl sm:text-3xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1 sm:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-xs text-gray-500 uppercase tracking-widest">
+                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">
                     {stat.label}
                   </div>
                 </div>
@@ -82,16 +82,16 @@ export default function AboutSection() {
           </div>
 
           {/* Mobile Carousel */}
-          <div className="lg:hidden relative w-full">
-            <div className="relative overflow-hidden px-2">
+          <div className="lg:hidden relative w-full mt-6 sm:mt-8">
+            <div className="relative overflow-hidden">
               <motion.div
                 animate={{ x: `-${currentCard * 100}%` }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 className="flex"
               >
                 {cards.map((card, index) => (
-                  <div key={index} className="min-w-full px-2">
-                    <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900 w-full">
+                  <div key={index} className="min-w-full flex justify-center px-3 sm:px-4">
+                    <BackgroundGradient className="rounded-[22px] p-4 sm:p-6 bg-zinc-900 max-w-sm">
                       <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-zinc-800">
                         <img 
                           src={card.image} 
@@ -99,8 +99,8 @@ export default function AboutSection() {
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">
+                      <h3 className="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">{card.title}</h3>
+                      <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
                         {card.description}
                       </p>
                     </BackgroundGradient>
