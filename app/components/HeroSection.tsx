@@ -142,7 +142,7 @@ export default function HeroSection() {
             className="text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto rounded-xl w-full sm:w-auto max-w-[280px] mx-auto lg:mx-0 lg:!w-[250px]"
           >
             <a
-              href="#work"
+              href="https://www.github.com/jr132662"
               className="flex items-center justify-center gap-3"
             >
               View my work
