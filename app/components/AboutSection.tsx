@@ -17,7 +17,7 @@ export default function AboutSection() {
     {
       title: 'Backend & APIs',
       description: 'Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing.',
-      image: '/images/supabase.png',
+      image: '/images/Supabase.png',
       alt: 'Database Schema',
     },
     {
