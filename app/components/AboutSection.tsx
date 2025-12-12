@@ -2,8 +2,32 @@
 
 import { motion } from 'framer-motion';
 import { BackgroundGradient } from '@/components/ui/background-gradient';
+import { useState } from 'react';
 
 export default function AboutSection() {
+  const [currentCard, setCurrentCard] = useState(0);
+
+  const cards = [
+    {
+      title: 'Frontend Development',
+      description: 'React, Next.js, TypeScript, and modern CSS frameworks. Building responsive, accessible interfaces.',
+      image: '/images/dashboard.png',
+      alt: 'Dashboard Interface',
+    },
+    {
+      title: 'Backend & APIs',
+      description: 'Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing.',
+      image: '/images/supabase.png',
+      alt: 'Database Schema',
+    },
+    {
+      title: 'UI/UX Design',
+      description: 'Figma, design systems, and user-centered interfaces. From concept to polished product.',
+      image: '/images/UIUX.png',
+      alt: 'UI/UX Design',
+    },
+  ];
+
   return (
     <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black py-32 px-6 lg:px-12">
       {/* Animated Background Grid */}
@@ -57,7 +81,55 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right Content - Background Gradient Cards */}
+          {/* Mobile Carousel */}
+          <div className="lg:hidden relative">
+            <div className="relative overflow-hidden">
+              <motion.div
+                animate={{ x: `-${currentCard * 100}%` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className="flex"
+              >
+                {cards.map((card, index) => (
+                  <div key={index} className="min-w-full px-4">
+                    <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
+                      <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-zinc-800">
+                        <img 
+                          src={card.image} 
+                          alt={card.alt} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {card.description}
+                      </p>
+                    </BackgroundGradient>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {cards.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentCard(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentCard === index ? 'bg-blue-400 w-8' : 'bg-gray-600'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Swipe hint */}
+            <div className="text-center mt-4 text-xs text-gray-500">
+              Swipe or tap dots to navigate
+            </div>
+          </div>
+
+          {/* Right Content - Background Gradient Cards (Desktop) */}
           <div className="relative h-[600px] hidden lg:block">
             {/* Card 1 - Frontend Development */}
             <motion.div
@@ -75,14 +147,14 @@ export default function AboutSection() {
               <BackgroundGradient className="rounded-[20px] p-8 bg-zinc-900">
                 <div className="relative w-full h-45 mb-4 rounded-xl overflow-hidden bg-zinc-800">
                   <img 
-                    src="/images/dashboard.png" 
-                    alt="Dashboard Interface" 
+                    src={cards[0].image} 
+                    alt={cards[0].alt} 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Frontend Development</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{cards[0].title}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed p-2.5">
-                  React, Next.js, TypeScript, and modern CSS frameworks. Building responsive, accessible interfaces.
+                  {cards[0].description}
                 </p>
               </BackgroundGradient>
             </motion.div>
@@ -104,14 +176,14 @@ export default function AboutSection() {
               <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
                 <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden bg-zinc-800">
                   <img 
-                    src="/images/supabase.png" 
-                    alt="Database Schema" 
+                    src={cards[1].image} 
+                    alt={cards[1].alt} 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Backend & APIs</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{cards[1].title}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed">
-                  Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing.
+                  {cards[1].description}
                 </p>
               </BackgroundGradient>
             </motion.div>
@@ -133,14 +205,14 @@ export default function AboutSection() {
               <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
                 <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden bg-zinc-800">
                   <img 
-                    src="/images/UIUX.png" 
-                    alt="UI/UX Design" 
+                    src={cards[2].image} 
+                    alt={cards[2].alt} 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">UI/UX Design</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{cards[2].title}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed">
-                  Figma, design systems, and user-centered interfaces. From concept to polished product.
+                  {cards[2].description}
                 </p>
               </BackgroundGradient>
             </motion.div>
