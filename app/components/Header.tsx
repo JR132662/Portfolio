@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function Header() {
+interface HeaderProps {
+    mobileMenuOpen: boolean;
+    setMobileMenuOpen: (open: boolean) => void;
+}
+
+export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
     const [scrolled, setScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { scrollY } = useScroll();
     const headerOpacity = useTransform(scrollY, [0, 100], [1, 0.98]);
     const headerBlur = useTransform(scrollY, [0, 100], [0, 20]);
