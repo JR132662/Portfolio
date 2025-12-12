@@ -82,16 +82,16 @@ export default function AboutSection() {
           </div>
 
           {/* Mobile Carousel */}
-          <div className="lg:hidden relative">
-            <div className="relative overflow-hidden">
+          <div className="lg:hidden relative w-full">
+            <div className="relative overflow-hidden px-2">
               <motion.div
                 animate={{ x: `-${currentCard * 100}%` }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 className="flex"
               >
                 {cards.map((card, index) => (
-                  <div key={index} className="min-w-full px-4">
-                    <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
+                  <div key={index} className="min-w-full px-2">
+                    <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900 w-full">
                       <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-zinc-800">
                         <img 
                           src={card.image} 
@@ -115,8 +115,8 @@ export default function AboutSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentCard(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentCard === index ? 'bg-blue-400 w-8' : 'bg-gray-600'
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    currentCard === index ? 'bg-blue-400 w-8' : 'bg-gray-600 w-2'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
