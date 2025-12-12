@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 export default function ProfileSection() {
   const ref = useRef(null);
@@ -38,29 +39,53 @@ export default function ProfileSection() {
         >
           <div className="absolute -inset-px bg-gradient-to-r from-blue-500/10 to-green-500/10 rounded-2xl blur-xl"></div>
           
-          <div className="relative">
-            <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-6">
-              I'm a <span className="text-white font-semibold">software engineer</span> focused on building high-performance, real-time web applications that sit at the intersection of modern front-end systems, AI, and production-grade infrastructure. My work centers on turning complex data into clean, intuitive dashboards that drive real-world decisions.
-            </p>
-            
-            <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-6">
-              I specialize in <span className="text-blue-400 font-semibold">React, Next.js, JavaScript/TypeScript, Node.js, and real-time data pipelines</span>, and I'm currently building AI-powered analytics platforms that process live video and operational data at the edge—then surface meaningful KPIs through responsive web interfaces. This includes full ownership of the stack: UI/UX, APIs, database design, real-time ingestion, and cloud deployment.
-            </p>
-            
-            <p className="text-lg lg:text-xl text-gray-300 leading-relaxed">
-              What sets me apart is my ability to <span className="text-purple-400 font-semibold">bridge product, engineering, and business</span>. I don't just build features—I build systems that scale, automate workflows, and generate measurable ROI. I thrive in environments where performance, reliability, and user experience actually matter.
-            </p>
-
-            <div className="mt-8 pt-6 border-t border-gray-700/50">
-              <h3 className="text-xl font-bold text-white mb-3">Languages</h3>
-              <div className="flex gap-4 text-gray-300">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                  <span>English</span>
+          <div className="relative grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 items-start">
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mx-auto lg:mx-0"
+            >
+              <div className="relative w-48 h-48 lg:w-full lg:h-auto lg:aspect-square">
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 rounded-2xl blur-lg opacity-50"></div>
+                <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-gray-700/50">
+                  <Image
+                    src="/images/JR.png"
+                    alt="Jonathan Rodriguez"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                  <span>Spanish</span>
+              </div>
+            </motion.div>
+
+            {/* Text Content */}
+            <div>
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-6">
+                I'm a <span className="text-white font-semibold">software engineer</span> focused on building high-performance, real-time web applications that sit at the intersection of modern front-end systems, AI, and production-grade infrastructure. My work centers on turning complex data into clean, intuitive dashboards that drive real-world decisions.
+              </p>
+              
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-6">
+                I specialize in <span className="text-blue-400 font-semibold">React, Next.js, JavaScript/TypeScript, Node.js, and real-time data pipelines</span>, and I'm currently building AI-powered analytics platforms that process live video and operational data at the edge—then surface meaningful KPIs through responsive web interfaces. This includes full ownership of the stack: UI/UX, APIs, database design, real-time ingestion, and cloud deployment.
+              </p>
+              
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-6">
+                What sets me apart is my ability to <span className="text-purple-400 font-semibold">bridge product, engineering, and business</span>. I don't just build features—I build systems that scale, automate workflows, and generate measurable ROI. I thrive in environments where performance, reliability, and user experience actually matter.
+              </p>
+
+              <div className="pt-6 border-t border-gray-700/50">
+                <h3 className="text-xl font-bold text-white mb-3">Languages</h3>
+                <div className="flex gap-4 text-gray-300">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                    <span>English</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                    <span>Spanish</span>
+                  </div>
                 </div>
               </div>
             </div>
