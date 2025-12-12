@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { scrollY } = useScroll();
     const headerOpacity = useTransform(scrollY, [0, 100], [1, 0.98]);
     const headerBlur = useTransform(scrollY, [0, 100], [0, 20]);
@@ -87,14 +88,41 @@ export default function Header() {
                         {/* Mobile Menu Button */}
                         <motion.button
                             whileTap={{ scale: 0.9 }}
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             className="md:hidden flex flex-col gap-1.5 p-2 !mr-[5px]"
                             aria-label="Menu"
                         >
-                            <span className="w-6 h-0.5 bg-white rounded-full"></span>
-                            <span className="w-6 h-0.5 bg-white rounded-full"></span>
-                            <span className="w-6 h-0.5 bg-white rounded-full"></span>
+                            <span className={`w-6 h-0.5 bg-white rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                            <span className={`w-6 h-0.5 bg-white rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                            <span className={`w-6 h-0.5 bg-white rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
                         </motion.button>
                     </div>
+
+                    {/* Mobile Menu */}
+                    {mobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="md:hidden border-t border-white/10 overflow-hidden"
+                        >
+                            <div className="px-6 py-4 space-y-2">
+                                {navLinks.map((link, index) => (
+                                    <motion.a
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="block px-4 py-3 text-base font-medium text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-300"
+                                    >
+                                        {link.name}
+                                    </motion.a>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
                 </nav>
             </div>
 
