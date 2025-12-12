@@ -13,7 +13,7 @@ export default function WorkSection() {
       company: "Sonny's Car Wash Factory",
       period: "04/2023 - present",
       location: "Miami, 33140",
-      description: "SwiftServe is an AI-powered real-time restaurant analytics platform running on NVIDIA Jetson edge hardware.",
+      description: "Sonny's Car Wash Factory is an automated car wash platform serving thousands of locations daily.",
       achievements: [
         "Leading a multi-phase modernization effort to migrate a 80,000+ line legacy jQuery/IIS kiosk application into a modular React architecture.",
         "Integrated front-end systems with complex hardware APIs: payment terminals, scanners, kiosk devices, and POS systems.",
