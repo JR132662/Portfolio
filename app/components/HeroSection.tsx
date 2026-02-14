@@ -135,7 +135,7 @@ export default function HeroSection() {
               className="text-base px-8 py-5 h-auto rounded-xl"
             >
               <a href="#projects" className="flex items-center justify-center gap-3">
-                View my work
+                My projects
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
