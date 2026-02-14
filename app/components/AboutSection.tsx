@@ -1,88 +1,126 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { BackgroundGradient } from '@/components/ui/background-gradient';
-import { useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
+import Image from 'next/image';
+
+const cards = [
+  {
+    title: 'Frontend Development',
+    description:
+      'React, Next.js, TypeScript, and modern CSS frameworks. Building responsive, accessible interfaces that scale.',
+    image: '/images/dashboard.png',
+    alt: 'Dashboard interface showing data visualization and analytics',
+  },
+  {
+    title: 'Backend & APIs',
+    description:
+      'Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing pipelines.',
+    image: '/images/Supabase.png',
+    alt: 'Database schema and API architecture diagram',
+  },
+  {
+    title: 'UI/UX Design',
+    description:
+      'Figma, design systems, and user-centered interfaces. From concept to polished, production-ready product.',
+    image: '/images/UIUX.png',
+    alt: 'UI/UX design mockup with component library',
+  },
+];
 
 export default function AboutSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentCard, setCurrentCard] = useState(0);
+  const touchStartX = useRef(0);
 
-  const cards = [
-    {
-      title: 'Frontend Development',
-      description: 'React, Next.js, TypeScript, and modern CSS frameworks. Building responsive, accessible interfaces.',
-      image: '/images/dashboard.png',
-      alt: 'Dashboard Interface',
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX.current - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentCard < cards.length - 1) {
+          setCurrentCard(currentCard + 1);
+        } else if (diff < 0 && currentCard > 0) {
+          setCurrentCard(currentCard - 1);
+        }
+      }
     },
-    {
-      title: 'Backend & APIs',
-      description: 'Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing.',
-      image: '/images/Supabase.png',
-      alt: 'Database Schema',
-    },
-    {
-      title: 'UI/UX Design',
-      description: 'Figma, design systems, and user-centered interfaces. From concept to polished product.',
-      image: '/images/UIUX.png',
-      alt: 'UI/UX Design',
-    },
-  ];
+    [currentCard]
+  );
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center bg-black py-16 sm:py-20 overflow-x-hidden">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-      
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+    <section
+      id="about"
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center bg-black py-20 sm:py-24 overflow-x-hidden"
+    >
+      {/* Background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
-      <div className="relative max-w-6xl mx-auto w-full sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-center">
+      <div className="relative max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left w-full">
-            <div className="inline-block mb-4 lg:mb-6">
-              <span 
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs sm:text-sm font-medium text-blue-400"
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                About Me
-              </span>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center lg:text-left"
+          >
+            <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-6">
+              About Me
+            </span>
 
-            <h2 className="text-lg sm:text-2xl lg:text-5xl font-bold mb-3 sm:mb-6 lg:mb-12 leading-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-              Full-Stack Developer & UI/UX Designer
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
+              Full-Stack Developer
+              <br />
+              <span className="text-gray-400">&amp; UI/UX Engineer</span>
             </h2>
 
-            <p className="text-[14px] sm:text-sm lg:text-lg text-gray-400 leading-relaxed mb-2 sm:mb-4 lg:mb-6">
+            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-4">
               I specialize in building production-ready applications with React, Next.js, and TypeScript. From IoT kiosks to enterprise dashboards, I transform complex requirements into intuitive, scalable solutions.
             </p>
 
-            <p className="text-[14px] sm:text-sm lg:text-lg text-gray-400 leading-relaxed mb-4 sm:mb-8 lg:mb-20">
-              With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design. Currently advancing AI-powered systems and real-time data processing at scale.
+            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-10">
+              With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-6 sm:mt-8 lg:mt-12">
+            <div className="grid grid-cols-3 gap-6">
               {[
                 { number: '30+', label: 'Projects' },
                 { number: '4+', label: 'Years' },
                 { number: '10+', label: 'Technologies' },
               ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1 sm:mb-2">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">
+                  <div className="text-xs text-gray-500 uppercase tracking-widest">
                     {stat.label}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Mobile Carousel */}
-          <div className="lg:hidden relative w-full mt-6 sm:mt-8">
+          <div
+            className="lg:hidden relative w-full mt-4"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <div className="relative overflow-hidden">
               <motion.div
                 animate={{ x: `-${currentCard * 100}%` }}
@@ -90,19 +128,19 @@ export default function AboutSection() {
                 className="flex"
               >
                 {cards.map((card, index) => (
-                  <div key={index} className="min-w-full flex justify-center px-3 sm:px-4">
-                    <BackgroundGradient className="rounded-[22px] p-4 sm:p-6 bg-zinc-900 max-w-sm">
-                      <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-zinc-800">
-                        <img 
-                          src={card.image} 
-                          alt={card.alt} 
-                          className="w-full h-full object-cover"
+                  <div key={index} className="min-w-full flex justify-center px-4">
+                    <BackgroundGradient className="rounded-[22px] p-5 bg-zinc-900 max-w-sm w-full">
+                      <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden bg-zinc-800">
+                        <Image
+                          src={card.image}
+                          alt={card.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 90vw, 400px"
                         />
                       </div>
-                      <h3 className="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">{card.title}</h3>
-                      <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                        {card.description}
-                      </p>
+                      <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
+                      <p className="text-sm text-gray-400 leading-relaxed">{card.description}</p>
                     </BackgroundGradient>
                   </div>
                 ))}
@@ -122,112 +160,50 @@ export default function AboutSection() {
                 />
               ))}
             </div>
-
-            {/* Swipe hint */}
-            <div className="text-center mt-4 text-xs text-gray-500">
-              Swipe or tap dots to navigate
-            </div>
           </div>
 
-          {/* Right Content - Background Gradient Cards (Desktop) */}
+          {/* Desktop Cards */}
           <div className="relative h-[600px] hidden lg:block">
-            {/* Card 1 - Frontend Development */}
-            <motion.div
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 2, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="absolute top-0 left-0 w-75"
-            >
-              <BackgroundGradient className="rounded-[20px] p-8 bg-zinc-900">
-                <div className="relative w-full h-45 mb-4 rounded-xl overflow-hidden bg-zinc-800">
-                  <img 
-                    src={cards[0].image} 
-                    alt={cards[0].alt} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{cards[0].title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed p-2.5">
-                  {cards[0].description}
-                </p>
-              </BackgroundGradient>
-            </motion.div>
+            {cards.map((card, index) => {
+              const positions = [
+                { className: 'absolute top-0 left-0 w-72', y: [0, -20, 0], rotate: [0, 2, 0], delay: 0 },
+                { className: 'absolute top-32 right-0 w-72', y: [0, 20, 0], rotate: [0, -2, 0], delay: 1 },
+                { className: 'absolute bottom-0 left-12 w-72', y: [0, -15, 0], rotate: [0, 1, 0], delay: 2 },
+              ];
+              const pos = positions[index];
 
-            {/* Card 2 - Backend & APIs */}
-            <motion.div
-              animate={{
-                y: [0, 20, 0],
-                rotate: [0, -2, 0],
-              }}
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 1,
-              }}
-              className="absolute top-32 right-0 w-72"
-            >
-              <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
-                <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden bg-zinc-800">
-                  <img 
-                    src={cards[1].image} 
-                    alt={cards[1].alt} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{cards[1].title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  {cards[1].description}
-                </p>
-              </BackgroundGradient>
-            </motion.div>
-
-            {/* Card 3 - UI/UX Design */}
-            <motion.div
-              animate={{
-                y: [0, -15, 0],
-                rotate: [0, 1, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 2,
-              }}
-              className="absolute bottom-0 left-12 w-72"
-            >
-              <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
-                <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden bg-zinc-800">
-                  <img 
-                    src={cards[2].image} 
-                    alt={cards[2].alt} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{cards[2].title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  {cards[2].description}
-                </p>
-              </BackgroundGradient>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-white/5 rounded-full"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full"
-            />
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={
+                    isInView
+                      ? { opacity: 1, y: pos.y, rotate: pos.rotate }
+                      : {}
+                  }
+                  transition={{
+                    opacity: { duration: 0.6, delay: 0.3 + index * 0.2 },
+                    y: { duration: 6 + index, repeat: Infinity, ease: 'easeInOut', delay: pos.delay },
+                    rotate: { duration: 6 + index, repeat: Infinity, ease: 'easeInOut', delay: pos.delay },
+                  }}
+                  className={pos.className}
+                >
+                  <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
+                    <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden bg-zinc-800">
+                      <Image
+                        src={card.image}
+                        alt={card.alt}
+                        fill
+                        className="object-cover"
+                        sizes="288px"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">{card.description}</p>
+                  </BackgroundGradient>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
