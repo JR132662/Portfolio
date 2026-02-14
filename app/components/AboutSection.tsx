@@ -10,21 +10,21 @@ const cards = [
     title: 'Frontend Development',
     description:
       'React, Next.js, TypeScript, and modern CSS frameworks. Building responsive, accessible interfaces that scale.',
-    image: '/images/dashboard.png',
+    image: '/images/optimized/dashboard.webp',
     alt: 'Dashboard interface showing data visualization and analytics',
   },
   {
     title: 'Backend & APIs',
     description:
       'Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing pipelines.',
-    image: '/images/Supabase.png',
+    image: '/images/optimized/Supabase.webp',
     alt: 'Database schema and API architecture diagram',
   },
   {
     title: 'UI/UX Design',
     description:
       'Figma, design systems, and user-centered interfaces. From concept to polished, production-ready product.',
-    image: '/images/UIUX.png',
+    image: '/images/optimized/UIUX.webp',
     alt: 'UI/UX design mockup with component library',
   },
 ];

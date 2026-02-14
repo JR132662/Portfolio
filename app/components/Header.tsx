@@ -105,7 +105,8 @@ export default function Header() {
                       e.preventDefault();
                       handleNavClick(link.href);
                     }}
-                    className={`relative group px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg ${
+                    aria-current={activeSection === link.href.slice(1) ? 'page' : undefined}
+                    className={`relative group px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg focus-visible:ring-2 focus-visible:ring-white/30 ${
                       activeSection === link.href.slice(1)
                         ? 'text-white'
                         : 'text-white/60 hover:text-white'
@@ -145,6 +146,7 @@ export default function Header() {
 
               {/* Mobile Menu Button */}
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden flex flex-col gap-1.5 p-2"
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}

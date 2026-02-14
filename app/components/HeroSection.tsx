@@ -103,14 +103,24 @@ export default function HeroSection() {
             </span>
           </motion.h1>
 
-          {/* Description */}
+          {/* Positioning */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-gray-400 text-base sm:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed"
+            className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
-            React-focused full-stack developer turning kiosks, edge AI, and dashboards into production-ready products.
+            I build <span className="text-white font-semibold">high-performance React & Next.js</span> products —
+            from enterprise kiosks to edge-AI analytics — with a focus on <span className="text-white font-semibold">clarity, speed, and conversion</span>.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.92 }}
+            className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto lg:mx-0"
+          >
+            Based in Miami • Available for full-time, contract, or consulting
           </motion.p>
 
           {/* CTAs */}
