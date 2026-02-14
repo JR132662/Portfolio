@@ -29,6 +29,12 @@ const cards = [
   },
 ];
 
+const stats = [
+  { number: '30+', label: 'Projects' },
+  { number: '4+', label: 'Years' },
+  { number: '10+', label: 'Technologies' },
+];
+
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -58,153 +64,142 @@ export default function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center bg-black py-20 sm:py-24 overflow-x-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-black py-20 sm:py-28 overflow-x-hidden"
     >
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_110%)]" />
 
-      <div className="relative max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left max-w-xl mx-auto lg:max-w-none lg:mx-0"
-          >
-            <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-6">
-              About Me
-            </span>
+      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        {/* Badge */}
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-8"
+        >
+          About Me
+        </motion.span>
 
-            <h2 className="mx-auto lg:mx-0 text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
-              Full-Stack Developer
-              <br />
-              <span className="text-gray-400">&amp; UI/UX Engineer</span>
-            </h2>
+        {/* Title — centered */}
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
+        >
+          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Full-Stack Developer</span>
+          <br />
+          <span className="text-gray-400">&amp; </span>
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">UI/UX Engineer</span>
+        </motion.h2>
 
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-4 mx-auto lg:mx-0 max-w-prose">
-              I specialize in building production-ready applications with React, Next.js, and TypeScript. From IoT kiosks to enterprise dashboards, I transform complex requirements into intuitive, scalable solutions.
-            </p>
+        {/* Paragraphs — centered, constrained width */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-gray-400 text-base sm:text-lg leading-relaxed mb-4 max-w-2xl mx-auto"
+        >
+          I specialize in building production-ready applications with React, Next.js, and TypeScript. From IoT kiosks to enterprise dashboards, I transform complex requirements into intuitive, scalable solutions.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="text-gray-400 text-base sm:text-lg leading-relaxed mb-12 max-w-2xl mx-auto"
+        >
+          With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design.
+        </motion.p>
 
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-10 mx-auto lg:mx-0 max-w-prose">
-              With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design.
-            </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 justify-items-center mx-auto lg:mx-0 max-w-md">
-              {[
-                { number: '30+', label: 'Projects' },
-                { number: '4+', label: 'Years' },
-                { number: '10+', label: 'Technologies' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-xs text-gray-500 uppercase tracking-widest">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
+        {/* Stats — centered row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="flex flex-wrap justify-center gap-10 sm:gap-16 mb-16"
+        >
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center group/stat">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1 group-hover/stat:scale-105 transition-transform duration-300">
+                {stat.number}
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-widest">
+                {stat.label}
+              </div>
             </div>
-          </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Mobile Carousel */}
-          <div
-            className="lg:hidden relative w-full mt-4"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div className="relative overflow-hidden">
-              <motion.div
-                animate={{ x: `-${currentCard * 100}%` }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className="flex"
-              >
-                {cards.map((card, index) => (
-                  <div key={index} className="min-w-full flex justify-center px-4">
-                    <BackgroundGradient className="rounded-[22px] p-5 bg-zinc-900 max-w-sm w-full">
-                      <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden bg-zinc-800">
-                        <Image
-                          src={card.image}
-                          alt={card.alt}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 90vw, 400px"
-                        />
-                      </div>
-                      <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">{card.description}</p>
-                    </BackgroundGradient>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Carousel Dots */}
-            <div className="flex justify-center gap-2 mt-6">
-              {cards.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentCard(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentCard === index ? 'bg-blue-400 w-8' : 'bg-gray-600 w-2'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop Cards */}
-          <div className="relative h-[600px] hidden lg:block">
-            {cards.map((card, index) => {
-              const positions = [
-                { className: 'absolute top-0 left-0 w-72', y: [0, -20, 0], rotate: [0, 2, 0], delay: 0 },
-                { className: 'absolute top-32 right-0 w-72', y: [0, 20, 0], rotate: [0, -2, 0], delay: 1 },
-                { className: 'absolute bottom-0 left-12 w-72', y: [0, -15, 0], rotate: [0, 1, 0], delay: 2 },
-              ];
-              const pos = positions[index];
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={
-                    isInView
-                      ? { opacity: 1, y: pos.y, rotate: pos.rotate }
-                      : {}
-                  }
-                  transition={{
-                    opacity: { duration: 0.6, delay: 0.3 + index * 0.2 },
-                    y: { duration: 6 + index, repeat: Infinity, ease: 'easeInOut', delay: pos.delay },
-                    rotate: { duration: 6 + index, repeat: Infinity, ease: 'easeInOut', delay: pos.delay },
-                  }}
-                  className={pos.className}
-                >
-                  <BackgroundGradient className="rounded-[22px] p-6 bg-zinc-900">
+        {/* Cards — mobile: carousel */}
+        <div
+          className="lg:hidden relative w-full max-w-sm mx-auto"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="relative overflow-hidden">
+            <motion.div
+              animate={{ x: `-${currentCard * 100}%` }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="flex"
+            >
+              {cards.map((card, index) => (
+                <div key={index} className="min-w-full flex justify-center px-2">
+                  <BackgroundGradient className="rounded-2xl p-5 bg-zinc-900 w-full">
                     <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden bg-zinc-800">
                       <Image
                         src={card.image}
                         alt={card.alt}
                         fill
                         className="object-cover"
-                        sizes="288px"
+                        sizes="(max-width: 640px) 90vw, 400px"
                       />
                     </div>
-                    <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">{card.description}</p>
+                    <h3 className="text-lg font-bold text-white mb-2 text-left">{card.title}</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed text-left">{card.description}</p>
                   </BackgroundGradient>
-                </motion.div>
-              );
-            })}
+                </div>
+              ))}
+            </motion.div>
           </div>
+          <div className="flex justify-center gap-2 mt-6">
+            {cards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentCard(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentCard === index ? 'bg-blue-400 w-8' : 'bg-gray-600 w-2'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Cards — desktop: centered row of 3 */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
+          {cards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 32 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+              className="flex justify-center"
+            >
+              <BackgroundGradient className="rounded-2xl p-6 bg-zinc-900 w-full max-w-sm">
+                <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden bg-zinc-800">
+                  <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 320px"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{card.description}</p>
+              </BackgroundGradient>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

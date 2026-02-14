@@ -2,8 +2,9 @@ import { SITE } from '@/app/content/site';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black border-t border-gray-900 py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="relative bg-black py-10 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" aria-hidden />
+      <div className="relative max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-white text-xs">
             JR
@@ -46,6 +47,7 @@ export default function Footer() {
             href={SITE.resumePath}
             target="_blank"
             rel="noopener noreferrer"
+            download="JonathanRodriguezResume.pdf"
             className="text-gray-500 hover:text-white text-sm transition-colors duration-300"
           >
             Resume

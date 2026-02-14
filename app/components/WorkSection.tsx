@@ -59,8 +59,9 @@ export default function WorkSection() {
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-6">
             Experience
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Work Experience
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <span className="text-white">Work </span>
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Experience</span>
           </h2>
         </motion.div>
 
@@ -79,12 +80,12 @@ export default function WorkSection() {
                 className="relative pl-12 sm:pl-16"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-2.5 sm:left-4.5 top-2 w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)] ring-4 ring-black" />
+                <div className="absolute left-2.5 sm:left-4.5 top-2 w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.9)] ring-4 ring-black animate-pulse" style={{ animationDuration: '2s' }} />
 
                 {/* Card */}
-                <div className="group relative bg-gray-900/50 border border-gray-800 rounded-2xl p-6 lg:p-8 hover:border-blue-500/40 transition-all duration-300">
+                <div className="group relative bg-gray-900/50 border border-gray-800 rounded-2xl p-6 lg:p-8 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300">
                   {/* Hover glow */}
-                  <div className="absolute -inset-px bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute -inset-px bg-gradient-to-r from-blue-500/15 to-purple-500/15 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 pointer-events-none" />
 
                   <div className="relative">
                     {/* Header */}

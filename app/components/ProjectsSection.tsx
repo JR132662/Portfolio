@@ -19,9 +19,9 @@ function ProjectCard({ project }: { project: Project }) {
       <DialogTrigger asChild>
         <button
           type="button"
-          className="group relative w-full text-left bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/40 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+          className="group relative w-full text-left bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
         >
-          <div className="absolute -inset-px bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute -inset-px bg-gradient-to-r from-blue-500/15 via-purple-500/20 to-pink-500/15 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 pointer-events-none" />
 
           <div className="relative">
             <div className="flex items-start justify-between gap-4 mb-3">
@@ -88,11 +88,11 @@ function ProjectCard({ project }: { project: Project }) {
               )}
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-sm text-white/70">
+            <div className="mt-4 flex items-center gap-2 text-sm text-white/70 group-hover:text-white transition-colors">
               <span className="inline-flex items-center gap-2">
                 View details
                 <svg
-                  className="w-4 h-4"
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -226,8 +226,9 @@ export default function ProjectsSection() {
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-500/10 to-orange-500/10 border border-pink-500/20 rounded-full text-xs font-medium text-pink-400 mb-6">
             Portfolio
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Projects with impact
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <span className="text-white">Projects with </span>
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">impact</span>
           </h2>
           <p className="text-gray-400 text-base max-w-2xl mx-auto">
             Work that ships — production systems, client funnels, and real-time analytics.

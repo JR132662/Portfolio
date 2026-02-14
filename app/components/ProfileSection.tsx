@@ -22,8 +22,9 @@ export default function ProfileSection() {
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-full text-xs font-medium text-green-400 mb-6">
             About
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            My Story
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <span className="text-white">My </span>
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Story</span>
           </h2>
         </motion.div>
 
@@ -31,8 +32,9 @@ export default function ProfileSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative bg-gray-900/50 border border-gray-800 rounded-2xl p-6 sm:p-8 lg:p-10"
+          className="group relative bg-gray-900/50 border border-gray-800 rounded-2xl p-6 sm:p-8 lg:p-10 hover:border-blue-500/30 transition-all duration-300"
         >
+          <div className="absolute -inset-px bg-gradient-to-r from-blue-500/5 via-purple-500/10 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 pointer-events-none" />
           <div className="relative grid grid-cols-1 lg:grid-cols-[180px_1fr] gap-8 items-start">
             {/* Profile Image */}
             <motion.div

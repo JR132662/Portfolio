@@ -10,8 +10,9 @@ export default function ContactSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="contact" className="relative bg-black py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(59,130,246,0.06),transparent_60%)]" />
+    <section id="contact" className="relative bg-black py-20 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(59,130,246,0.08),transparent_60%)]" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" aria-hidden />
 
       <div ref={ref} className="relative z-10 max-w-2xl mx-auto text-center">
         <motion.div
@@ -23,8 +24,9 @@ export default function ContactSection() {
             Get in Touch
           </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Let&apos;s work together
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <span className="text-white">Let&apos;s work </span>
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">together</span>
           </h2>
 
           <p className="text-gray-300 text-base lg:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
@@ -33,7 +35,7 @@ export default function ContactSection() {
 
           <div className="mx-auto mb-10 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
             {[{label:'Build',value:'React + Next.js'}, {label:'Optimize',value:'Core Web Vitals'}, {label:'Deliver',value:'Conversion-ready UI'}].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300">
                 <div className="text-[11px] text-white/50">{item.label}</div>
                 <div className="text-sm font-semibold text-white">{item.value}</div>
               </div>

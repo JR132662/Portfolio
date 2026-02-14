@@ -72,7 +72,7 @@ export default function Header() {
           <nav
             className={`relative backdrop-blur-xl rounded-2xl border transition-all duration-500 ${
               scrolled
-                ? 'bg-white/10 border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+                ? 'bg-white/10 border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_0_1px_rgba(59,130,246,0.08),0_0_20px_rgba(139,92,246,0.06)]'
                 : 'bg-white/5 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]'
             }`}
             aria-label="Main navigation"
@@ -89,8 +89,8 @@ export default function Header() {
                 aria-label="Back to top"
               >
                 <div className="relative">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-                  <div className="relative w-9 h-9 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center font-bold text-white text-sm shadow-lg">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl blur-lg opacity-0 group-hover:opacity-70 transition-all duration-500 scale-110 group-hover:scale-100" />
+                  <div className="relative w-9 h-9 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center font-bold text-white text-sm shadow-lg ring-2 ring-white/0 group-hover:ring-white/20 ring-offset-2 ring-offset-transparent transition-all duration-300">
                     JR
                   </div>
                 </div>
@@ -137,6 +137,7 @@ export default function Header() {
                 href={SITE.resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
+                download="JonathanRodriguezResume.pdf"
                 className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -194,6 +195,7 @@ export default function Header() {
                       href={SITE.resumePath}
                       target="_blank"
                       rel="noopener noreferrer"
+                      download="JonathanRodriguezResume.pdf"
                       className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-blue-400 hover:text-blue-300 rounded-lg transition-colors duration-300"
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

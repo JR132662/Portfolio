@@ -15,6 +15,7 @@ const IconCloud = dynamic(
 
 import { RainbowButton } from '@/components/ui/rainbow-button';
 import { motion, useInView } from 'framer-motion';
+import { SITE } from '@/app/content/site';
 
 export default function HeroSection() {
   const ref = useRef(null);
@@ -41,19 +42,19 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden noise"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.12),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(236,72,153,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.12),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.14),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(236,72,153,0.1),transparent_50%)]" />
       </div>
 
       {/* Cursor Glow — scoped to hero section */}
       <div
         ref={cursorGlowRef}
-        className="pointer-events-none absolute w-80 h-80 -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(59,130,246,0.15),rgba(139,92,246,0.08),transparent_70%)] rounded-full blur-3xl z-10 opacity-0 hover:opacity-100 transition-opacity"
+        className="pointer-events-none absolute w-[28rem] h-[28rem] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(59,130,246,0.2),rgba(139,92,246,0.1),transparent_65%)] rounded-full blur-3xl z-10 opacity-0 hover:opacity-100 transition-opacity duration-500"
         style={{ willChange: 'left, top' }}
       />
 
@@ -68,6 +69,16 @@ export default function HeroSection() {
         transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut" }}
         className="absolute top-1/3 right-1/4 w-3 h-3 bg-purple-400 rounded-full blur-sm"
       />
+      <motion.div
+        animate={{ y: [0, 25, 0], opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 6, repeat: Infinity, delay: 2, ease: "easeInOut" }}
+        className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-pink-400 rounded-full blur-sm"
+      />
+      <motion.div
+        animate={{ opacity: [0.15, 0.4, 0.15] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 right-1/3 w-2 h-2 bg-blue-300 rounded-full blur"
+      />
 
       <div ref={ref} className="relative z-20 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left Content */}
@@ -77,7 +88,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm mt-8"
           >
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
@@ -102,7 +113,7 @@ export default function HeroSection() {
             <span aria-hidden className="block text-white">interfaces for</span>
             <span
               aria-hidden
-              className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+              className="block text-gradient-shimmer bg-clip-text"
             >
               chaotic systems.
             </span>
@@ -154,6 +165,19 @@ export default function HeroSection() {
               Get in touch
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+
+            <a
+              href={SITE.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="JonathanRodriguezResume.pdf"
+              className="inline-flex items-center justify-center gap-2 px-8 py-5 text-base font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300"
+            >
+              Resume
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </a>
           </motion.div>
@@ -210,6 +234,23 @@ export default function HeroSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2"
+        >
+          <span className="w-1 h-1.5 rounded-full bg-white/60" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

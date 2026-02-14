@@ -26,6 +26,21 @@ export type Project = {
  */
 export const PROJECTS: Project[] = [
   {
+    title: 'Market360 Solutions',
+    subtitle: 'Professional Residential Painting',
+    category: 'Web',
+    status: 'Live',
+    summary:
+      'Conversion-focused marketing site for a South Florida residential painting company — free estimates, service pages, gallery, and lead capture.',
+    outcomes: [
+      'Designed a high-converting layout with clear CTAs, trust signals (licensed & insured, 500+ homes), and social proof.',
+      'Built service flows (interior, exterior, trim, surface prep) and a simple four-step process section.',
+      'Delivered mobile-first performance with gallery, FAQs, and zero-friction quote capture.',
+    ],
+    tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    links: [{ label: 'Visit site', href: 'https://www.market360solutions.com/' }],
+  },
+  {
     title: 'Kiosk React Migration',
     subtitle: "Sonny's Enterprises",
     category: 'Enterprise',
@@ -75,19 +90,6 @@ export const PROJECTS: Project[] = [
       'Optimized for performance and readability on mobile.',
     ],
     tech: ['React', 'Next.js'],
-  },
-  {
-    title: 'Gym Membership Platform',
-    subtitle: 'Mobile + Web App',
-    category: 'Mobile',
-    summary:
-      'Membership platform with payments, bookings, and premium UI across mobile and web surfaces.',
-    outcomes: [
-      'Implemented Stripe-backed subscription/payment flows.',
-      'Built trainer booking and session management UX that feels native and fast.',
-      'Delivered an MVP that supports real operations: scheduling, alerts, and member management.',
-    ],
-    tech: ['React Native', 'React', 'Stripe'],
   },
   {
     title: 'Ramirez Enriquez Law Firm',

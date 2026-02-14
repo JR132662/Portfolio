@@ -51,8 +51,9 @@ export default function SkillsSection() {
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full text-xs font-medium text-purple-400 mb-6">
             Technical Skills
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Skills &amp; Technologies
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <span className="text-white">Skills &amp; </span>
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Technologies</span>
           </h2>
         </motion.div>
 
@@ -65,7 +66,7 @@ export default function SkillsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + catIndex * 0.1 }}
-                className="bg-gray-900/50 border border-gray-800 rounded-2xl p-6"
+                className="group/card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border mb-4 ${colors.badge}`}>
                   {category.label}
@@ -80,7 +81,7 @@ export default function SkillsSection() {
                       className="group relative"
                     >
                       <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.glow} to-transparent rounded-lg opacity-0 group-hover:opacity-60 blur transition duration-300`} />
-                      <div className="relative px-3 py-1.5 bg-gray-800/80 border border-gray-700/50 rounded-lg text-sm text-gray-300 font-medium hover:text-white transition-colors">
+                      <div className="relative px-3 py-1.5 bg-gray-800/80 border border-gray-700/50 rounded-lg text-sm text-gray-300 font-medium hover:text-white hover:scale-105 transition-all duration-200">
                         {skill}
                       </div>
                     </motion.div>
