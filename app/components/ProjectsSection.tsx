@@ -19,11 +19,11 @@ function ProjectCard({ project }: { project: Project }) {
       <DialogTrigger asChild>
         <button
           type="button"
-          className="group relative w-full text-left bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+          className="group relative w-full h-full min-h-[280px] md:min-h-0 text-left bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 flex flex-col"
         >
           <div className="absolute -inset-px bg-gradient-to-r from-blue-500/15 via-purple-500/20 to-pink-500/15 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 pointer-events-none" />
 
-          <div className="relative">
+          <div className="relative flex flex-col flex-1 min-h-0">
             <div className="flex items-start justify-between gap-4 mb-3">
               <div>
                 <h3 className="text-lg lg:text-xl font-bold text-white mb-0.5">
@@ -72,7 +72,7 @@ function ProjectCard({ project }: { project: Project }) {
               </div>
             )}
 
-            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-gray-800">
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-gray-800 flex-1 min-h-0">
               {project.tech.slice(0, 6).map((tech) => (
                 <span
                   key={tech}
@@ -88,7 +88,7 @@ function ProjectCard({ project }: { project: Project }) {
               )}
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-sm text-white/70 group-hover:text-white transition-colors">
+            <div className="mt-4 flex items-center gap-2 text-sm text-white/70 group-hover:text-white transition-colors shrink-0">
               <span className="inline-flex items-center gap-2">
                 View details
                 <svg
@@ -251,13 +251,14 @@ export default function ProjectsSection() {
           </div>
 
           <TabsContent value={filter}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 md:items-stretch">
               {filtered.map((project, index) => (
                 <motion.div
                   key={project.title}
                   initial={{ opacity: 0, y: 24 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.15 + index * 0.06 }}
+                  className="min-h-0 flex md:h-full"
                 >
                   <ProjectCard project={project} />
                 </motion.div>
