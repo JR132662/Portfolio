@@ -94,11 +94,16 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight"
           >
-            <span className="text-white">Building calm</span>
-            <br />
-            <span className="text-white">interfaces for</span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            {/* Keep a clean, fully-spaced phrase for SEO/screen readers */}
+            <span className="sr-only">Building calm interfaces for chaotic systems.</span>
+
+            {/* Visual layout (aria-hidden so it doesn't read as disjointed fragments) */}
+            <span aria-hidden className="block text-white">Building calm</span>
+            <span aria-hidden className="block text-white">interfaces for</span>
+            <span
+              aria-hidden
+              className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            >
               chaotic systems.
             </span>
           </motion.h1>

@@ -12,24 +12,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jonathanrodriguez.dev";
+
 export const metadata: Metadata = {
   title: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
   description:
     "React-focused full-stack developer building production-ready kiosks, edge AI analytics, and enterprise dashboards. Based in Miami.",
-  metadataBase: new URL("https://jonathanrodriguez.dev"),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
     description:
       "React-focused full-stack developer building production-ready kiosks, edge AI analytics, and enterprise dashboards.",
+    url: siteUrl,
     type: "website",
     locale: "en_US",
     siteName: "Jonathan Rodriguez Portfolio",
+    images: [
+      {
+        url: "/images/optimized/dashboard.webp",
+        width: 1200,
+        height: 630,
+        alt: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
     description:
       "React-focused full-stack developer building production-ready kiosks, edge AI analytics, and enterprise dashboards.",
+    images: ["/images/optimized/dashboard.webp"],
   },
   robots: {
     index: true,
