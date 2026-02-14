@@ -76,7 +76,7 @@ export default function AboutSection() {
               About Me
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
+            <h2 className="mx-auto lg:mx-0 text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
               Full-Stack Developer
               <br />
               <span className="text-gray-400">&amp; UI/UX Engineer</span>
