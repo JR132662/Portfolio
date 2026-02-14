@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { SITE } from '@/app/content/site';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -133,7 +134,7 @@ export default function Header() {
 
               {/* Resume download (desktop) */}
               <a
-                href="/Jonathan-Rodriguez-FlowCV-Resume-20251209.pdf"
+                href={SITE.resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300"
@@ -190,7 +191,7 @@ export default function Header() {
                       </motion.a>
                     ))}
                     <a
-                      href="/Jonathan-Rodriguez-FlowCV-Resume-20251209.pdf"
+                      href={SITE.resumePath}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-blue-400 hover:text-blue-300 rounded-lg transition-colors duration-300"

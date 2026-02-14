@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { RainbowButton } from '@/components/ui/rainbow-button';
+import { SITE } from '@/app/content/site';
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -26,9 +27,18 @@ export default function ContactSection() {
             Let&apos;s work together
           </h2>
 
-          <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-10 max-w-lg mx-auto">
-            Looking for a developer who can take your project from concept to production? I&apos;m available for full-time roles, contract work, and consulting.
+          <p className="text-gray-300 text-base lg:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
+            If you need someone who can ship a polished UI fast — and still sweat the details (performance, accessibility, conversion) — let’s talk.
           </p>
+
+          <div className="mx-auto mb-10 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
+            {[{label:'Build',value:'React + Next.js'}, {label:'Optimize',value:'Core Web Vitals'}, {label:'Deliver',value:'Conversion-ready UI'}].map((item) => (
+              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <div className="text-[11px] text-white/50">{item.label}</div>
+                <div className="text-sm font-semibold text-white">{item.value}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
@@ -42,7 +52,7 @@ export default function ContactSection() {
             className="text-base px-8 py-5 h-auto rounded-xl"
           >
             <a
-              href="mailto:jonathan@swiftcomputing.io"
+              href={`mailto:${SITE.email}`}
               className="flex items-center justify-center gap-3"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -53,7 +63,7 @@ export default function ContactSection() {
           </RainbowButton>
 
           <a
-            href="https://www.github.com/jr132662"
+            href={SITE.github}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-5 text-base font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-300"
@@ -73,7 +83,7 @@ export default function ContactSection() {
           className="flex justify-center gap-4 mt-8"
         >
           <a
-            href="https://www.linkedin.com/in/jonathanrodriguezdev"
+            href={SITE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 text-gray-500 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all duration-300"
