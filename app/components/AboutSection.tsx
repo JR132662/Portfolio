@@ -70,7 +70,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left max-w-xl mx-auto lg:max-w-none lg:mx-0"
           >
             <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-6">
               About Me
@@ -82,16 +82,16 @@ export default function AboutSection() {
               <span className="text-gray-400">&amp; UI/UX Engineer</span>
             </h2>
 
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-4">
+            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-4 mx-auto lg:mx-0 max-w-prose">
               I specialize in building production-ready applications with React, Next.js, and TypeScript. From IoT kiosks to enterprise dashboards, I transform complex requirements into intuitive, scalable solutions.
             </p>
 
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-10">
+            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-10 mx-auto lg:mx-0 max-w-prose">
               With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 justify-items-center mx-auto lg:mx-0 max-w-md">
               {[
                 { number: '30+', label: 'Projects' },
                 { number: '4+', label: 'Years' },
