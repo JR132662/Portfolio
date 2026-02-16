@@ -14,7 +14,7 @@ const ContactSection = dynamic(() => import('./components/ContactSection'), { ss
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black overflow-x-hidden">
       <ScrollProgress />
       <Header />
       <main id="main-content">
