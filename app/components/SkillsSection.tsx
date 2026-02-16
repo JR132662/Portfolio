@@ -41,24 +41,26 @@ export default function SkillsSection() {
   useGSAP(() => {
     if (!containerRef.current) return;
 
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
     const cards = containerRef.current.querySelectorAll<HTMLElement>('.skill-card');
 
     cards.forEach((card, index) => {
-      // Cards slide in from alternating sides
-      const fromX = index % 2 === 0 ? -80 : 80;
+      const fromY = isMobile ? 30 : 0;
+      const fromX = isMobile ? 0 : index % 2 === 0 ? -60 : 60;
 
       gsap.fromTo(
         card,
-        { x: fromX, opacity: 0, scale: 0.92 },
+        { x: fromX, y: fromY, opacity: 0 },
         {
           x: 0,
+          y: 0,
           opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: isMobile ? 0.5 : 0.8,
+          ease: 'power2.out',
+          force3D: true,
           scrollTrigger: {
             trigger: card,
-            start: 'top 88%',
+            start: 'top 90%',
             once: true,
           },
         }
@@ -68,17 +70,17 @@ export default function SkillsSection() {
       const tags = card.querySelectorAll('.skill-tag');
       gsap.fromTo(
         tags,
-        { opacity: 0, scale: 0.6, y: 12 },
+        { opacity: 0, y: 8 },
         {
           opacity: 1,
-          scale: 1,
           y: 0,
-          duration: 0.4,
-          stagger: 0.05,
-          ease: 'back.out(2)',
+          duration: isMobile ? 0.25 : 0.4,
+          stagger: isMobile ? 0.03 : 0.05,
+          ease: 'power2.out',
+          force3D: true,
           scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
+            start: 'top 85%',
             once: true,
           },
         }
