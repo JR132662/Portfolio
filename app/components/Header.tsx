@@ -6,7 +6,8 @@ import { SITE } from '@/app/content/site';
 
 const navLinks = [
   { name: 'About', href: '#about' },
-  { name: 'Work', href: '#work' },
+  { name: 'Experience', href: '#work' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Profile', href: '#profile' },
   { name: 'Contact', href: '#contact' },
@@ -29,7 +30,7 @@ export default function Header() {
 
   // Track active section via IntersectionObserver
   useEffect(() => {
-    const sectionIds = ['about', 'work', 'projects', 'profile', 'contact'];
+    const sectionIds = ['about', 'work', 'skills', 'projects', 'value', 'profile', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

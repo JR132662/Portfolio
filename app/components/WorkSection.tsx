@@ -10,16 +10,17 @@ const experiences = [
     period: 'Apr 2023 – Present',
     location: 'Miami, FL',
     description:
-      "Leading the modernization of an 80,000+ line legacy kiosk system serving thousands of car wash locations daily.",
+      "Leading the modernization of an 80,000+ line legacy kiosk system deployed across hundreds of car wash locations serving thousands of daily transactions.",
     achievements: [
-      'Architecting a multi-phase migration from legacy jQuery/IIS to a modular React application with reusable component library.',
-      'Integrating frontend systems with complex hardware APIs: payment terminals, barcode scanners, kiosk devices, and POS systems.',
-      'Designing a scalable React architecture supporting auto-updates and streamlined maintenance across hundreds of deployed kiosks.',
-      'Collaborating with product managers and QA to ship features, resolve customer issues, and maintain high reliability in production.',
-      'Managing high-volume client requests from field operations with rapid debugging and production hotfixes.',
+      'Architecting a multi-phase migration from legacy jQuery/IIS to modular React + TypeScript, reducing regression risk and accelerating feature delivery.',
+      'Integrating frontend systems with payment terminals, barcode scanners, kiosk hardware, and POS APIs — ensuring zero-downtime reliability in production.',
+      'Designing a reusable component library and scalable architecture supporting auto-updates across 100s of deployed kiosk units.',
+      'Reduced average bug resolution time through systematic debugging workflows and production hotfix pipelines.',
+      'Collaborating cross-functionally with product managers, QA, and field operations to ship features and resolve live customer issues.',
     ],
     tech: ['React', 'TypeScript', 'jQuery', 'JavaScript', 'REST APIs', 'IIS', 'Nginx'],
     status: 'Migration in progress',
+    impact: '80k+ LOC · 100s of kiosks · Production critical',
   },
   {
     role: 'Co-Founder & Lead Engineer',
@@ -27,15 +28,16 @@ const experiences = [
     period: 'Jun 2025 – Present',
     location: 'Miami Beach, FL',
     description:
-      'Building SwiftServe — an AI-powered real-time restaurant analytics platform running on NVIDIA Jetson edge hardware.',
+      'Building SwiftServe — an AI-powered real-time restaurant analytics platform running on NVIDIA Jetson edge hardware, from concept to production deployment.',
     achievements: [
-      'Built an end-to-end edge-to-cloud analytics pipeline using DeepStream, YOLOv11 TensorRT models, MQTT event streams, and Supabase.',
-      'Designed zone-based computer vision logic to track queue wait time, throughput, dwell time, abandonment, and staff response metrics.',
-      'Implemented automated bot pipelines, systemd services, real-time event handlers, and HLS video streaming via Nginx + ffmpeg.',
-      'Built cloud backend with Node.js + Supabase and a full React dashboard for real-time visualization and KPI tracking.',
-      'Architected production deployment strategy for multi-location installations with scalable SaaS positioning.',
+      'Designed and built an end-to-end edge-to-cloud pipeline: DeepStream + YOLOv11 (TensorRT) → MQTT → Supabase → React dashboard, processing live video at the edge.',
+      'Implemented zone-based computer vision logic tracking queue wait time, throughput, dwell time, abandonment rates, and staff response metrics.',
+      'Built automated deployment pipelines with systemd services, HLS video streaming (Nginx + ffmpeg), and real-time event handlers.',
+      'Developed a full-stack cloud backend (Node.js + Supabase) and React dashboard for real-time KPI visualization and historical trend analysis.',
+      'Architecting multi-location SaaS deployment strategy with scalable infrastructure for commercial rollout.',
     ],
     tech: ['NVIDIA Jetson', 'YOLOv11', 'TensorRT', 'DeepStream', 'MQTT', 'React', 'Node.js', 'Supabase', 'Docker'],
+    impact: 'Edge AI · Real-time analytics · SaaS',
   },
 ];
 
@@ -128,6 +130,16 @@ export default function WorkSection() {
                       <div className="mb-5 inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                         <span className="text-blue-300 text-xs font-medium">{exp.status}</span>
+                      </div>
+                    )}
+
+                    {/* Impact summary */}
+                    {exp.impact && (
+                      <div className={`${exp.status ? 'ml-3' : 'mb-5'} inline-flex items-center gap-2 px-3 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-lg`}>
+                        <svg className="w-3.5 h-3.5 text-purple-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                        <span className="text-purple-300 text-xs font-medium">{exp.impact}</span>
                       </div>
                     )}
 

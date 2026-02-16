@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -20,21 +20,27 @@ export default function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-6">
-            Get in Touch
-          </span>
+          {/* Availability badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+            <span className="text-emerald-400 text-xs font-medium tracking-wide">Available Now — Responds within 24 hours</span>
+          </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-white">Let&apos;s work </span>
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">together</span>
+            <span className="text-white">Let&apos;s build </span>
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">something great</span>
           </h2>
 
-          <p className="text-gray-300 text-base lg:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-            If you need someone who can ship a polished UI fast — and still sweat the details (performance, accessibility, conversion) — let’s talk.
+          <p className="text-gray-300 text-base lg:text-lg leading-relaxed mb-4 max-w-xl mx-auto">
+            Looking for an engineer who can own features end-to-end, ship fast, and communicate clearly? I&apos;m open to <span className="text-white font-medium">full-time roles, contract work, and technical consulting</span>.
+          </p>
+
+          <p className="text-gray-500 text-sm mb-8 max-w-lg mx-auto">
+            Available for remote or Miami-based positions. Open to relocation for the right opportunity.
           </p>
 
           <div className="mx-auto mb-10 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
-            {[{label:'Build',value:'React + Next.js'}, {label:'Optimize',value:'Core Web Vitals'}, {label:'Deliver',value:'Conversion-ready UI'}].map((item) => (
+            {[{label:'Specialties',value:'React · Next.js · TypeScript'}, {label:'Experience',value:'4+ years production'}, {label:'Strengths',value:'Ship fast, own outcomes'}].map((item) => (
               <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300">
                 <div className="text-[11px] text-white/50">{item.label}</div>
                 <div className="text-sm font-semibold text-white">{item.value}</div>

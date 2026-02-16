@@ -95,7 +95,7 @@ export default function HeroSection() {
               transition={{ duration: 2, repeat: Infinity }}
               className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]"
             />
-            <span className="text-emerald-400 text-sm font-medium tracking-wide">Available for Projects</span>
+            <span className="text-emerald-400 text-sm font-medium tracking-wide">Open to Opportunities</span>
           </motion.div>
 
           {/* Heading */}
@@ -105,17 +105,15 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight"
           >
-            {/* Keep a clean, fully-spaced phrase for SEO/screen readers */}
-            <span className="sr-only">Building calm interfaces for chaotic systems.</span>
+            <span className="sr-only">I build software that ships, scales, and converts.</span>
 
-            {/* Visual layout (aria-hidden so it doesn't read as disjointed fragments) */}
-            <span aria-hidden className="block text-white">Building calm</span>
-            <span aria-hidden className="block text-white">interfaces for</span>
+            <span aria-hidden className="block text-white">I build software</span>
+            <span aria-hidden className="block text-white">that ships, scales,</span>
             <span
               aria-hidden
               className="block text-gradient-shimmer bg-clip-text"
             >
-              chaotic systems.
+              and converts.
             </span>
           </motion.h1>
 
@@ -126,8 +124,9 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
-            I build <span className="text-white font-semibold">high-performance React & Next.js</span> products —
-            from enterprise kiosks to edge-AI analytics — with a focus on <span className="text-white font-semibold">clarity, speed, and conversion</span>.
+            <span className="text-white font-semibold">Full-Stack Engineer</span> with <span className="text-white font-semibold">4+ years</span> shipping
+            production React & Next.js apps — from <span className="text-white font-semibold">80k+ LOC enterprise kiosks</span> to
+            real-time <span className="text-white font-semibold">edge-AI analytics platforms</span>.
           </motion.p>
 
           <motion.p
@@ -136,8 +135,27 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.92 }}
             className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto lg:mx-0"
           >
-            Based in Miami • Available for full-time, contract, or consulting
+            Miami, FL &bull; Full-time, Contract, or Consulting &bull; Remote-friendly
           </motion.p>
+
+          {/* Quick stats strip — recruiter scannable */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.96 }}
+            className="flex flex-wrap gap-3 justify-center lg:justify-start"
+          >
+            {[
+              { value: '4+', label: 'Years Exp.' },
+              { value: '30+', label: 'Projects' },
+              { value: '80k+', label: 'LOC Migrated' },
+            ].map((stat) => (
+              <div key={stat.label} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                <span className="text-sm font-bold text-white">{stat.value}</span>
+                <span className="text-xs text-gray-400">{stat.label}</span>
+              </div>
+            ))}
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
@@ -151,7 +169,7 @@ export default function HeroSection() {
               className="text-base px-8 py-5 h-auto rounded-xl"
             >
               <a href="#projects" className="flex items-center justify-center gap-3">
-                My projects
+                View my work
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -159,25 +177,25 @@ export default function HeroSection() {
             </RainbowButton>
 
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-5 text-base font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-300"
-            >
-              Get in touch
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </a>
-
-            <a
               href={SITE.resumePath}
               target="_blank"
               rel="noopener noreferrer"
               download="JonathanRodriguezResume.pdf"
-              className="inline-flex items-center justify-center gap-2 px-8 py-5 text-base font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-5 text-base font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-300"
             >
-              Resume
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Resume
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-5 text-base font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300"
+            >
+              Get in touch
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
           </motion.div>

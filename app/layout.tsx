@@ -17,41 +17,104 @@ const geistMono = Geist_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jonathanrodriguez.dev";
 
 export const metadata: Metadata = {
-  title: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
+  title: "Jonathan Rodriguez — Full-Stack Developer | React, Next.js, TypeScript",
   description:
-    "React-focused full-stack developer building production-ready kiosks, edge AI analytics, and enterprise dashboards. Based in Miami.",
+    "Full-stack software engineer with 4+ years of experience building production-grade React & Next.js applications — enterprise kiosks, edge-AI analytics, and conversion-optimized web products. Based in Miami, FL.",
+  keywords: [
+    "Full-Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Frontend Engineer",
+    "Software Engineer",
+    "Miami Developer",
+    "UI/UX Engineer",
+    "Edge AI",
+    "Enterprise Applications",
+  ],
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
+    title: "Jonathan Rodriguez — Full-Stack Developer | React, Next.js, TypeScript",
     description:
-      "React-focused full-stack developer building production-ready kiosks, edge AI analytics, and enterprise dashboards.",
+      "Full-stack engineer building production-grade React & Next.js applications — enterprise kiosks, edge-AI analytics, and high-conversion web products.",
     url: siteUrl,
     type: "website",
     locale: "en_US",
-    siteName: "Jonathan Rodriguez Portfolio",
+    siteName: "Jonathan Rodriguez | Software Engineer Portfolio",
     images: [
       {
         url: "/images/optimized/dashboard.webp",
         width: 1200,
         height: 630,
-        alt: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
+        alt: "Jonathan Rodriguez — Full-Stack Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jonathan Rodriguez — Full-Stack Developer & UI/UX Engineer",
+    title: "Jonathan Rodriguez — Full-Stack Developer | React & Next.js",
     description:
-      "React-focused full-stack developer building production-ready kiosks, edge AI analytics, and enterprise dashboards.",
+      "4+ years shipping production React apps — enterprise kiosks, edge-AI platforms, and conversion-optimized web products.",
     images: ["/images/optimized/dashboard.webp"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   other: {
     "theme-color": "#000000",
   },
+};
+
+/* JSON-LD Structured Data for recruiter/search discoverability */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jonathan Rodriguez",
+  url: siteUrl,
+  jobTitle: "Full-Stack Software Engineer",
+  description:
+    "Full-stack developer specializing in React, Next.js, TypeScript, and edge-AI systems. 4+ years of production experience.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Miami",
+    addressRegion: "FL",
+    addressCountry: "US",
+  },
+  email: "rodtechdevelopment@gmail.com",
+  sameAs: [
+    "https://www.github.com/jr132662",
+    "https://www.linkedin.com/in/jonathanrodriguezdev",
+  ],
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Node.js",
+    "Python",
+    "PostgreSQL",
+    "MongoDB",
+    "Docker",
+    "Computer Vision",
+    "Edge AI",
+    "TensorRT",
+    "NVIDIA Jetson",
+    "Supabase",
+    "REST APIs",
+    "Tailwind CSS",
+    "Figma",
+  ],
 };
 
 export default function RootLayout({
@@ -64,6 +127,10 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

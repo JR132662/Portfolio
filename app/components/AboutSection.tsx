@@ -7,32 +7,33 @@ import Image from 'next/image';
 
 const cards = [
   {
-    title: 'Frontend Development',
+    title: 'Frontend Architecture',
     description:
-      'React, Next.js, TypeScript, and modern CSS frameworks. Building responsive, accessible interfaces that scale.',
+      'React, Next.js, TypeScript — component-driven UIs with design systems, state management, and performance-first patterns that scale across teams.',
     image: '/images/optimized/dashboard.webp',
     alt: 'Dashboard interface showing data visualization and analytics',
   },
   {
-    title: 'Backend & APIs',
+    title: 'Backend & Infrastructure',
     description:
-      'Node.js, Python, PostgreSQL, and MongoDB. RESTful APIs and real-time data processing pipelines.',
+      'Node.js, Python, PostgreSQL, Supabase, Docker. RESTful APIs, real-time pipelines, and edge computing on NVIDIA Jetson hardware.',
     image: '/images/optimized/Supabase.webp',
     alt: 'Database schema and API architecture diagram',
   },
   {
-    title: 'UI/UX Design',
+    title: 'Product & Design',
     description:
-      'Figma, design systems, and user-centered interfaces. From concept to polished, production-ready product.',
+      'Figma to production. Conversion-optimized layouts, accessibility-first design, and data-driven UX decisions that improve business outcomes.',
     image: '/images/optimized/UIUX.webp',
     alt: 'UI/UX design mockup with component library',
   },
 ];
 
 const stats = [
-  { number: '30+', label: 'Projects' },
-  { number: '4+', label: 'Years' },
-  { number: '10+', label: 'Technologies' },
+  { number: '4+', label: 'Years Experience' },
+  { number: '30+', label: 'Projects Shipped' },
+  { number: '80k+', label: 'LOC Migrated' },
+  { number: '100s', label: 'Kiosks Deployed' },
 ];
 
 export default function AboutSection() {
@@ -87,10 +88,10 @@ export default function AboutSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
         >
-          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Full-Stack Developer</span>
+          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Full-Stack Engineer</span>
           <br />
-          <span className="text-gray-400">&amp; </span>
-          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">UI/UX Engineer</span>
+          <span className="text-gray-400">who </span>
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">ships production code</span>
         </motion.h2>
 
         {/* Paragraphs — centered, constrained width */}
@@ -100,7 +101,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-gray-400 text-base sm:text-lg leading-relaxed mb-4 max-w-2xl mx-auto"
         >
-          I specialize in building production-ready applications with React, Next.js, and TypeScript. From IoT kiosks to enterprise dashboards, I transform complex requirements into intuitive, scalable solutions.
+          I turn ambiguous requirements into reliable, maintainable software. From modernizing an <span className="text-white font-medium">80,000+ line legacy kiosk system</span> to building <span className="text-white font-medium">real-time AI analytics platforms</span>, I work across the entire stack with a bias toward shipping.
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -108,7 +109,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="text-gray-400 text-base sm:text-lg leading-relaxed mb-12 max-w-2xl mx-auto"
         >
-          With expertise spanning frontend development, Python automation, and database optimization, I bridge the gap between technical complexity and user-friendly design.
+          My sweet spot: <span className="text-blue-400 font-medium">React/Next.js frontends</span>, <span className="text-purple-400 font-medium">Node.js/Python backends</span>, and connecting them to complex hardware, databases, and third-party systems under real-world constraints.
         </motion.p>
 
         {/* Stats — centered row */}

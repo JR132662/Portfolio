@@ -7,22 +7,22 @@ const skillCategories = [
   {
     label: 'Frontend',
     color: 'blue',
-    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'],
+    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Framer Motion'],
   },
   {
     label: 'Backend & Data',
     color: 'purple',
-    skills: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'Supabase', 'REST APIs'],
+    skills: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'Supabase', 'REST APIs', 'MQTT'],
   },
   {
-    label: 'AI & Edge',
+    label: 'AI & Edge Computing',
     color: 'pink',
-    skills: ['Computer Vision (YOLO)', 'DeepStream', 'TensorRT', 'NVIDIA Jetson', 'MQTT'],
+    skills: ['Computer Vision (YOLO)', 'DeepStream', 'TensorRT', 'NVIDIA Jetson', 'OpenCV', 'Edge Deployment'],
   },
   {
-    label: 'Tools',
+    label: 'DevOps & Tools',
     color: 'emerald',
-    skills: ['Git', 'Docker', 'Figma', 'Nginx', 'Linux'],
+    skills: ['Git', 'Docker', 'Nginx', 'Linux', 'CI/CD', 'Figma', 'Vercel'],
   },
 ];
 

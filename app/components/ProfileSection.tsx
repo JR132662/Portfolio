@@ -61,33 +61,48 @@ export default function ProfileSection() {
             {/* Text Content */}
             <div className="space-y-5">
               <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-                I&apos;m a <span className="text-white font-semibold">software engineer</span> focused on building high-performance, real-time web applications at the intersection of modern frontend systems, AI, and production-grade infrastructure. My work centers on turning complex data into clean, intuitive dashboards that drive real-world decisions.
+                I&apos;m a <span className="text-white font-semibold">full-stack software engineer</span> who thrives at the intersection of complex systems and clean user experiences. I don&apos;t just write code — I own problems end-to-end, from understanding business requirements to deploying production-grade solutions that handle real-world scale.
               </p>
 
               <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-                I specialize in{' '}
+                My core stack is{' '}
                 <span className="text-blue-400 font-semibold">
-                  React, Next.js, TypeScript, Node.js, and real-time data pipelines
+                  React, Next.js, TypeScript, Node.js, and Python
                 </span>
-                , and I&apos;m currently building AI-powered analytics platforms that process live video and operational data at the edge — then surface meaningful KPIs through responsive web interfaces.
+                . Day-to-day, I work across the entire stack — building component libraries, integrating hardware APIs, designing database schemas, and deploying edge-AI pipelines on NVIDIA Jetson hardware.
               </p>
 
               <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-                What sets me apart is my ability to{' '}
+                What I bring to a team:{' '}
                 <span className="text-purple-400 font-semibold">
-                  bridge product, engineering, and business
+                  fast execution, strong ownership, and the ability to communicate across engineering, product, and business stakeholders
                 </span>
-                . I don&apos;t just build features — I build systems that scale, automate workflows, and generate measurable ROI.
+                . I&apos;ve led multi-phase architecture migrations, built SaaS products from zero, and consistently shipped features under production pressure.
               </p>
+
+              {/* Key strengths — recruiter scannable */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+                {[
+                  { icon: '⚡', text: 'Fast learner & self-starter' },
+                  { icon: '🏗️', text: 'Architecture & system design' },
+                  { icon: '🤝', text: 'Cross-functional collaboration' },
+                  { icon: '🚀', text: 'Ship fast, iterate often' },
+                ].map((item) => (
+                  <div key={item.text} className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-sm text-gray-300 font-medium">{item.text}</span>
+                  </div>
+                ))}
+              </div>
 
               <div className="flex items-center gap-6 pt-5 border-t border-gray-800">
                 <div className="flex items-center gap-2 text-sm text-gray-300">
                   <div className="w-2 h-2 rounded-full bg-blue-400" />
-                  <span>English</span>
+                  <span>English (Fluent)</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-300">
                   <div className="w-2 h-2 rounded-full bg-green-400" />
-                  <span>Spanish</span>
+                  <span>Spanish (Native)</span>
                 </div>
               </div>
             </div>
