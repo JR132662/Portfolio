@@ -44,21 +44,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Jonathan Rodriguez | Software Engineer Portfolio",
-    images: [
-      {
-        url: "/images/optimized/dashboard.webp",
-        width: 1200,
-        height: 630,
-        alt: "Jonathan Rodriguez — Full-Stack Developer Portfolio",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Jonathan Rodriguez — Full-Stack Developer | React & Next.js",
     description:
       "4+ years shipping production React apps — enterprise kiosks, edge-AI platforms, and conversion-optimized web products.",
-    images: ["/images/optimized/dashboard.webp"],
   },
   robots: {
     index: true,
