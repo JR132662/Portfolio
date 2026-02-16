@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jonathanrodriguez.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rodtechdev.com";
 
 export const metadata: Metadata = {
   title: "Jonathan Rodriguez — Full-Stack Developer | React, Next.js, TypeScript",

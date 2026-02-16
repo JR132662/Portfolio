@@ -111,7 +111,7 @@ export async function submitQuote(payload: QuotePayload): Promise<ActionResult> 
       </div>
 
       <div style="padding: 16px 32px; background: #111; border-top: 1px solid #222; text-align: center;">
-        <p style="margin: 0; color: #555; font-size: 12px;">Sent from jonathanrodriguez.dev/quote</p>
+        <p style="margin: 0; color: #555; font-size: 12px;">Sent from rodtechdev.com/quote</p>
       </div>
     </div>
   `;
