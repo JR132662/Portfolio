@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { SITE } from '@/app/content/site';
+import Link from 'next/link';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -133,19 +134,27 @@ export default function Header() {
                 ))}
               </div>
 
-              {/* Resume download (desktop) */}
-              <a
-                href={SITE.resumePath}
-                target="_blank"
-                rel="noopener noreferrer"
-                download="JonathanRodriguezResume.pdf"
-                className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Resume
-              </a>
+              {/* Desktop right actions */}
+              <div className="hidden md:flex items-center gap-2">
+                <a
+                  href={SITE.resumePath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="JonathanRodriguezResume.pdf"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Resume
+                </a>
+                <Link
+                  href="/quote"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-lg shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  Request a Quote
+                </Link>
+              </div>
 
               {/* Mobile Menu Button */}
               <button
@@ -204,6 +213,13 @@ export default function Header() {
                       </svg>
                       Download Resume
                     </a>
+                    <Link
+                      href="/quote"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-center justify-center"
+                    >
+                      Request a Quote
+                    </Link>
                   </div>
                 </motion.div>
               )}
