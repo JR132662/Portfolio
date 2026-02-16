@@ -13,6 +13,8 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
+import ScrollReveal from './ScrollReveal';
+
 function ProjectCard({ project }: { project: Project }) {
   return (
     <Dialog>
@@ -217,12 +219,7 @@ export default function ProjectsSection() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(139,92,246,0.03),transparent_60%)]" />
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+        <ScrollReveal direction="up" className="mb-12 text-center">
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-500/10 to-orange-500/10 border border-pink-500/20 rounded-full text-xs font-medium text-pink-400 mb-6">
             Portfolio
           </span>
@@ -233,7 +230,7 @@ export default function ProjectsSection() {
           <p className="text-gray-400 text-base max-w-2xl mx-auto">
             Work that ships — production systems, client funnels, and real-time analytics.
           </p>
-        </motion.div>
+        </ScrollReveal>
 
         <Tabs
           value={filter}

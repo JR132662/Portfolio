@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
+import ScrollReveal from './ScrollReveal';
 
 export default function ProfileSection() {
   const ref = useRef(null);
@@ -13,12 +14,7 @@ export default function ProfileSection() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(59,130,246,0.03),transparent_60%)]" />
 
       <div ref={ref} className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+        <ScrollReveal direction="up" className="mb-12 text-center">
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-full text-xs font-medium text-green-400 mb-6">
             About
           </span>
@@ -26,7 +22,7 @@ export default function ProfileSection() {
             <span className="text-white">My </span>
             <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Story</span>
           </h2>
-        </motion.div>
+        </ScrollReveal>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}

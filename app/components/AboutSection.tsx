@@ -4,6 +4,8 @@ import { motion, useInView } from 'framer-motion';
 import { BackgroundGradient } from '@/components/ui/background-gradient';
 import { useRef, useState, useCallback } from 'react';
 import Image from 'next/image';
+import AnimatedCounter from './AnimatedCounter';
+import ScrollReveal from './ScrollReveal';
 
 const cards = [
   {
@@ -72,27 +74,25 @@ export default function AboutSection() {
 
       <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         {/* Badge */}
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-8"
-        >
-          About Me
-        </motion.span>
+        <ScrollReveal direction="up" delay={0}>
+          <span
+            className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-8"
+          >
+            About Me
+          </span>
+        </ScrollReveal>
 
         {/* Title — centered */}
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
-        >
-          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Full-Stack Engineer</span>
-          <br />
-          <span className="text-gray-400">who </span>
-          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">ships production code</span>
-        </motion.h2>
+        <ScrollReveal direction="up" delay={0.1} distance={40}>
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
+          >
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Full-Stack Engineer</span>
+            <br />
+            <span className="text-gray-400">who </span>
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">ships production code</span>
+          </h2>
+        </ScrollReveal>
 
         {/* Paragraphs — centered, constrained width */}
         <motion.p
@@ -122,7 +122,7 @@ export default function AboutSection() {
           {stats.map((stat, index) => (
             <div key={index} className="text-center group/stat">
               <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1 group-hover/stat:scale-105 transition-transform duration-300">
-                {stat.number}
+                <AnimatedCounter value={stat.number} duration={2 + index * 0.3} />
               </div>
               <div className="text-xs text-gray-500 uppercase tracking-widest">
                 {stat.label}

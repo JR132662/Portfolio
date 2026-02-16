@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import ScrollReveal from './ScrollReveal';
 
 const differentiators = [
   {
@@ -82,12 +83,7 @@ export default function ValueSection() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.04),transparent_60%)]" />
 
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+        <ScrollReveal direction="up" className="mb-12 text-center">
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 rounded-full text-xs font-medium text-emerald-400 mb-6">
             Why Work With Me
           </span>
@@ -98,7 +94,7 @@ export default function ValueSection() {
           <p className="text-gray-400 text-base max-w-2xl mx-auto">
             Beyond technical skills — the engineering habits and mindset that make a real difference.
           </p>
-        </motion.div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 gap-6">
           {differentiators.map((item, index) => {

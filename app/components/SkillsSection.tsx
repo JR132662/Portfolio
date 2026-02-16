@@ -1,7 +1,9 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
+import ScrollReveal from './ScrollReveal';
 
 const skillCategories = [
   {
@@ -34,20 +36,64 @@ const colorMap: Record<string, { badge: string; glow: string }> = {
 };
 
 export default function SkillsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!containerRef.current) return;
+
+    const cards = containerRef.current.querySelectorAll<HTMLElement>('.skill-card');
+
+    cards.forEach((card, index) => {
+      // Cards slide in from alternating sides
+      const fromX = index % 2 === 0 ? -80 : 80;
+
+      gsap.fromTo(
+        card,
+        { x: fromX, opacity: 0, scale: 0.92 },
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            once: true,
+          },
+        }
+      );
+
+      // Stagger the skill tags inside each card
+      const tags = card.querySelectorAll('.skill-tag');
+      gsap.fromTo(
+        tags,
+        { opacity: 0, scale: 0.6, y: 12 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.05,
+          ease: 'back.out(2)',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, { scope: containerRef, dependencies: [] });
 
   return (
     <section id="skills" className="relative bg-black py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_60%)]" />
 
-      <div ref={ref} className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+      <div ref={containerRef} className="relative z-10 max-w-4xl mx-auto">
+        <ScrollReveal direction="up" className="mb-12 text-center">
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full text-xs font-medium text-purple-400 mb-6">
             Technical Skills
           </span>
@@ -55,39 +101,35 @@ export default function SkillsSection() {
             <span className="text-white">Skills &amp; </span>
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Technologies</span>
           </h2>
-        </motion.div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 gap-6">
           {skillCategories.map((category, catIndex) => {
             const colors = colorMap[category.color];
             return (
-              <motion.div
+              <div
                 key={catIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + catIndex * 0.1 }}
-                className="group/card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 hover:-translate-y-0.5 transition-all duration-300"
+                className="skill-card group/card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 hover:-translate-y-0.5 transition-all duration-300"
+                style={{ opacity: 0 }}
               >
                 <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border mb-4 ${colors.badge}`}>
                   {category.label}
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ duration: 0.3, delay: 0.2 + catIndex * 0.1 + index * 0.03 }}
-                      className="group relative"
+                      className="skill-tag group relative"
+                      style={{ opacity: 0 }}
                     >
                       <div className={`absolute -inset-0.5 bg-gradient-to-r ${colors.glow} to-transparent rounded-lg opacity-0 group-hover:opacity-60 blur transition duration-300`} />
                       <div className="relative px-3 py-1.5 bg-gray-800/80 border border-gray-700/50 rounded-lg text-sm text-gray-300 font-medium hover:text-white hover:scale-105 transition-all duration-200">
                         {skill}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

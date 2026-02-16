@@ -171,3 +171,9 @@ section[id] {
 .animate-subtle-pulse {
   animation: subtle-pulse 2s ease-in-out infinite;
 }
+
+/* GSAP scroll progress bar gradient animation */
+@keyframes scrollbar-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}

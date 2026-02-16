@@ -7,6 +7,7 @@ import SkillsSection from './components/SkillsSection';
 import ValueSection from './components/ValueSection';
 import ProjectsSection from './components/ProjectsSection';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
 
 const ProfileSection = dynamic(() => import('./components/ProfileSection'), { ssr: true });
 const ContactSection = dynamic(() => import('./components/ContactSection'), { ssr: true });
@@ -14,6 +15,7 @@ const ContactSection = dynamic(() => import('./components/ContactSection'), { ss
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
+      <ScrollProgress />
       <Header />
       <main id="main-content">
         <HeroSection />

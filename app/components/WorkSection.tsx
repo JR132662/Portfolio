@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import ScrollReveal from './ScrollReveal';
 
 const experiences = [
   {
@@ -52,12 +53,7 @@ export default function WorkSection() {
 
       <div ref={ref} className="relative z-10 max-w-4xl mx-auto">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
+        <ScrollReveal direction="up" className="mb-16 text-center">
           <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-xs font-medium text-blue-400 mb-6">
             Experience
           </span>
@@ -65,7 +61,7 @@ export default function WorkSection() {
             <span className="text-white">Work </span>
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Experience</span>
           </h2>
-        </motion.div>
+        </ScrollReveal>
 
         {/* Timeline */}
         <div className="relative">
@@ -74,11 +70,11 @@ export default function WorkSection() {
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <motion.div
+              <ScrollReveal
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
+                direction="left"
+                delay={index * 0.15}
+                distance={40}
                 className="relative pl-12 sm:pl-16"
               >
                 {/* Timeline dot */}
@@ -156,7 +152,7 @@ export default function WorkSection() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
